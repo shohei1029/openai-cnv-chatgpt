@@ -7,7 +7,7 @@ from langchain.prompts.chat import (ChatPromptTemplate, MessagesPlaceholder, Sys
 import azure.cognitiveservices.speech as speechsdk
 
 from dotenv import load_dotenv 
-load_dotenv("/home/shohei/.env", override=True)
+load_dotenv("/home/shohei/.env", override=True) # Please replace with your own .env file
 
 # Azure OpenAI のキーとエンドポイントの設定
 OPENAI_API_BASE = os.environ["AZURE_OPENAI_API_BASE"]
@@ -18,7 +18,7 @@ DEPLOYMENT_NAME ="gpt-35-turbo"
 SPPECH_ENDPOINT_ID = os.environ["AZURE_SPEECH_ENDPOINT_ID"] # for Custom Neural Voice (CNV)
 SPEECH_KEY = os.environ["AZURE_SPEECH_API_KEY"]
 SPEECH_REGION = "eastus"
-VOICETYPE = "Lite ShoheiNeural" # VOICETYPE = "ja-JP-AoiNeural", "NanamiNeural"
+VOICETYPE = "Lite ShoheiNeural" # VOICETYPE = "ja-JP-AoiNeural", "NanamiNeural" for simple TTS
 
 # 音声サービスのインスタンス作成
 speech_config = speechsdk.SpeechConfig(subscription=SPEECH_KEY, region=SPEECH_REGION)
