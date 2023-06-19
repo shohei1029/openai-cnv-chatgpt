@@ -1,7 +1,7 @@
 [project]
 name = "openai-cnv-chatgpt"
 version = "0.1.0"
-description = "Add a short description here"
+description = "Demo for Custom Neural Voice (Azure Cognitive Services for Language) and ChatGPT"
 authors = [
     { name = "Shohei Nagata", email = "7954174+shohei1029@users.noreply.github.com" }
 ]
