@@ -6,7 +6,7 @@ from langchain.prompts.chat import (ChatPromptTemplate, MessagesPlaceholder, Sys
 import azure.cognitiveservices.speech as speechsdk
 
 from dotenv import load_dotenv 
-load_dotenv("~/.env", override=True)
+load_dotenv("/home/shohei/.env", override=True)
 
 # Azure OpenAI のキーとエンドポイントの設定
 OPENAI_API_BASE = os.environ["AZURE_OPENAI_API_BASE"]
