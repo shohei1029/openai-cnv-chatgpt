@@ -14,7 +14,7 @@ OPENAI_API_VERSION = "2023-05-15"
 OPENAI_API_KEY = os.environ["AZURE_OPENAI_API_KEY"]
 DEPLOYMENT_NAME ="gpt-35-turbo"
 # Azure Speech Services のキーと音声の設定
-SPPECH_ENDPOINT_ID = os.environ["AZURE_SPEECH_ENDPOINT_ID"]
+SPPECH_ENDPOINT_ID = os.environ["AZURE_SPEECH_ENDPOINT_ID"] # for Custom Neural Voice (CNV)
 SPEECH_KEY = os.environ["AZURE_SPEECH_API_KEY"]
 SPEECH_REGION = "eastus"
 VOICETYPE = "Lite ShoheiNeural" # VOICETYPE = "ja-JP-AoiNeural", "NanamiNeural"
@@ -25,7 +25,7 @@ speech_config.speech_recognition_language="ja-JP"
 audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True) 
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
 
-speech_config.endpoint_id = SPPECH_ENDPOINT_ID
+speech_config.endpoint_id = SPPECH_ENDPOINT_ID # for CNV
 speech_config.speech_synthesis_voice_name=VOICETYPE
 audio_config = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
 speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
@@ -75,7 +75,7 @@ if __name__ == "__main__":
     # with open("./context.txt", "r", encoding='utf-8') as f: 
     #     context = f.read() # 別ファイルにあるコンテキスト (これまでの会話/行動の要約)を読み込み
     # system_template = template + context
-    system_template = """あなたは私の友達です。あなたの名前は永田 (ナガタ)です。私とは親しい友達のように会話してください。"""
+    system_template = """あなたは私の友達です。あなたの名前は永田 (ナガタ)です。私とは親しい友達のように会話してください。敬語を使わないで、カジュアルに話してください"""
 
     # 上記テンプレートを用いてプロンプトテンプレートを作成
     prompt = ChatPromptTemplate.from_messages([SystemMessagePromptTemplate.from_template(system_template), 
