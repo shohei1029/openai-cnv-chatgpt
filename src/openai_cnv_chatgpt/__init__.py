@@ -1,4 +1,4 @@
-import os, time
+import os
 from langchain.chat_models import AzureChatOpenAI 
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
