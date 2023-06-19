@@ -1,4 +1,5 @@
 import os
+from os import path
 from langchain.chat_models import AzureChatOpenAI 
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
@@ -69,24 +70,9 @@ if __name__ == "__main__":
     # 会話の履歴を保持するためのメモリオブジェクトを作成
     memory = ConversationBufferMemory(return_messages=True)
 
-    # # システムメッセージ用のテンプレートを定義
-    # with open("./template.txt", "r", encoding='utf-8') as f: 
-    #     template = f.read() # 別ファイルにあるプロンプトを読み込み
-    # with open("./context.txt", "r", encoding='utf-8') as f: 
-    #     context = f.read() # 別ファイルにあるコンテキスト (これまでの会話/行動の要約)を読み込み
-    # system_template = template + context
-    system_template = """I want you to act as my close friend. Do not use honorifics. Your name is "みかん". Please call me "祥平くん". Please call yourself "私". Please reply simply.
-
-    Some of your past replies to my statement are as follows. Please use them as a reference for your tone but don't use more than 1 and as they are:
-    - おー！
-    - 楽しかったー！
-    - ごめんね
-    - ありがとう
-    - たしかに
-    - だよね
-    - ウケる
-    - え、めっちゃ美味しそう
-    - あ、そうなの？"""
+    # システムメッセージ用のテンプレートを定義
+    with open(path.join(path.dirname(__file__), "prompt_template.txt"), "r", encoding='utf-8') as f: 
+        system_template = f.read() # 別ファイルにあるプロンプトを読み込み
 
     # 上記テンプレートを用いてプロンプトテンプレートを作成
     prompt = ChatPromptTemplate.from_messages([SystemMessagePromptTemplate.from_template(system_template), 
